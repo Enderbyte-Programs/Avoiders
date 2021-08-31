@@ -1,0 +1,5 @@
+0.0.2
+Added win and collide
+-----
+0.0.1
+Started game. Just a screen with a little thing that moves around
