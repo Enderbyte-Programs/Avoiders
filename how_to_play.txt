@@ -1,0 +1,4 @@
+DOS-CAVE is a simple game made using pygame. 
+This document contains instructions about how to use.
+
+Upon startup,
