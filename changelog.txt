@@ -1,3 +1,6 @@
+0.1
+Added a Tk game menu, music, and way to add more levels.
+-----
 0.0.2
 Added win and collide
 -----
