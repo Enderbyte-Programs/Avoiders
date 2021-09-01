@@ -1,3 +1,6 @@
+0.1.2
+Fixed potenital issue that may come up with the addition of more levels.
+-----
 0.1.1
 Fixed bug where game menu mainloop would not exit correctly if called recursively.
 -----
