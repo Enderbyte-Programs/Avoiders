@@ -15,7 +15,7 @@ from pygame.locals import (K_UP,
 
     QUIT,)
 import platform
-SYSVERSION = '0.1.1'
+SYSVERSION = '0.1.2'
 from tkinter import Tk, Label, Button
 from tkinter import messagebox
 import os
@@ -32,9 +32,9 @@ pygame.mixer.music.load('music.ogg')
 pygame.mixer.music.play(loops=-1)
 
 def cfu():
-    global SYSVERSION
+    
     data = get('https://pastebin.com/raw/cg0knwqc').text
-    SYSVERSION = version.parse(SYSVERSION)
+    SYSVERSION = version.parse("0.1.2")
     LATVERSION = version.parse(data[0:5])
     if LATVERSION > SYSVERSION:
         Tk().withdraw()
