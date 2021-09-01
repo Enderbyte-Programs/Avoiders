@@ -1,5 +1,5 @@
-#Parkour Game Build 0.1
-from tkinter.constants import LEFT,BOTTOM
+#Parkour Game Build 0.1.2
+from tkinter.constants import LEFT,BOTTOM,RIGHT
 import pygame
 from pygame.locals import (K_UP,
 
@@ -15,9 +15,13 @@ from pygame.locals import (K_UP,
 
     QUIT,)
 import platform
+SYSVERSION = '0.1.1'
 from tkinter import Tk, Label, Button
 from tkinter import messagebox
 import os
+from requests import get
+from packaging import version
+from webbrowser import open as web
 cwd = os.getcwd()
 if platform.system() == 'Windows':
     slash = '\\'
@@ -26,6 +30,21 @@ else:
 pygame.mixer.init()
 pygame.mixer.music.load('music.ogg')
 pygame.mixer.music.play(loops=-1)
+
+def cfu():
+    global SYSVERSION
+    data = get('https://pastebin.com/raw/cg0knwqc').text
+    SYSVERSION = version.parse(SYSVERSION)
+    LATVERSION = version.parse(data[0:5])
+    if LATVERSION > SYSVERSION:
+        Tk().withdraw()
+        l = messagebox.askyesno('Update','A new update is available('+data[0:5]+'). Do you want to download it?')
+        if l == True:
+            web(data[5:len(data)])
+    else:
+        Tk().withdraw()
+        messagebox.showinfo('Update','No new versions are available')
+
 win_sound = pygame.mixer.Sound("win.ogg")
 lose_sound = pygame.mixer.Sound("lose.ogg")
 #music init here
@@ -53,6 +72,8 @@ while True:
     btn1.pack(side=BOTTOM)
     btn2 = Button(root,text='How To Play',bg='yellow',command=lambda: os.startfile('how_to_play.txt'))
     btn2.pack(side=BOTTOM)
+    btn3 = Button(root,text='Check for updates',bg='skyblue',command=cfu)
+    btn3.pack(side=RIGHT)
     root.mainloop()
     
     if lvl == 1:
@@ -125,9 +146,11 @@ while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+                    pygame.display.quit()
                 if event.type == pygame.KEYDOWN:
                     if event.key == K_ESCAPE:
                         running = False
+                        pygame.display.quit()
             pressed_keys = pygame.key.get_pressed()
             player.update(pressed_keys)
             screen.fill((0,0,0))
