@@ -33,9 +33,15 @@ lose_sound = pygame.mixer.Sound("lose.ogg")
 while True:
     lvl = 0
     def lvlassig(level):
-        root.destroy()
+        global root
         global lvl
         lvl = level
+        root.quit()
+        root.destroy()
+    def die():
+        global root
+        root.quit()
+        root.destroy()
     root = Tk()
     root.title('Game Menu')
     root.geometry('600x100')
@@ -43,12 +49,14 @@ while True:
     lbl.pack()
     btn = Button(root,text='Level 1',bg='lime green',command=lambda: lvlassig(1))
     btn.pack(side=LEFT)
-    btn1 = Button(root,text='Exit',bg='Red',command=root.destroy)
+    btn1 = Button(root,text='Exit',bg='Red',command=die)
     btn1.pack(side=BOTTOM)
     btn2 = Button(root,text='How To Play',bg='yellow',command=lambda: os.startfile('how_to_play.txt'))
     btn2.pack(side=BOTTOM)
     root.mainloop()
+    
     if lvl == 1:
+       
         class Player(pygame.sprite.Sprite):
             def __init__(self):
                 super(Player,self).__init__()
@@ -148,7 +156,9 @@ while True:
             Tk().withdraw()
             messagebox.showwarning('Game','You died.')
     elif lvl == 0:
+
         pygame.mixer.music.stop()
         pygame.mixer.quit()
+        pygame.quit()
         break
 
