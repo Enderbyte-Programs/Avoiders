@@ -1,4 +1,37 @@
 DOS-CAVE is a simple game made using pygame. 
 This document contains instructions about how to use.
 
-Upon startup,
+Upon startup, you will be greeted with a Tkinter GUI window. It will have  level button(s), Exit, Character change,
+and check for updates. Lets start with 
+
+LEVEL BUTTONS
+Clicking the level of your choice will start the associated game level (stored internally).
+
+HOW TO PLAY
+
+You are the person. Navigate with the arrow keys. (I am going to add a girl character soon for those
+that want it). Your goal is to get to the green box (win) without touching any of the white obstacles.
+Touching an obstacle will result in you dieing. You will than have to select the level to play again.
+
+EXIT BUTTON
+This will shutdown the app
+
+EXIT IN GAME
+You can exit to the menu by pressing escape while in the game. (bug with that fixed 0.1.1.3)
+You can also do this by pressing the x in the corner of the screen.
+
+CHECK FOR UPDATES
+Using a pastebin, pressing this button will check for updates. If one is found, it will notify you and ask
+if you want to download.
+
+CHANGE TO _ CHRACTER
+The light blue and pink buttons change your character. There is a girl and a boy character. You can make your own character
+by overwriting the game files 'girl.png' and 'boy.png'. The character images are 40x100 pixels.
+
+WHAT TO DO IF YOU FIND A BUG
+Report it at github.
+https://github.com/Enderbyte-Programs/Parkour_Game/issues
+
+LEVEL / FEATURE SUGGESTIONS
+Feature request at Github
+https://github.com/Enderbyte-Programs/Parkour_Game/issues
