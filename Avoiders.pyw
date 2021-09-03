@@ -108,7 +108,7 @@ while True:
     root = Tk()
     root.title('Game Menu')
     root.geometry('600x200')
-    lbl = Label(root,text='Welcome to Dos cave. Please select the level that you want to play. If you are unsure, press HOW TO PLAY.')
+    lbl = Label(root,text='Welcome to Avoiders. Please select the level that you want to play. If you are unsure, press HOW TO PLAY.')
     lbl.pack()
     btn = Button(root,text='Level 1',bg='lime green',command=lambda: lvlassig(1))
     btn.pack(side=LEFT)

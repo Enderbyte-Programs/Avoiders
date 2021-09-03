@@ -1,7 +1,7 @@
-DOS-CAVE is a simple game made using pygame. 
+Avoiders is a simple game made using pygame. 
 This document contains instructions about how to use.
 
-Upon startup, you will be greeted with a Tkinter GUI window. It will have  level button(s), Exit, Character change,
+Upon startup, you will be greeted with a Tkinter GUI window. It will have  level button(s), Exit, Character change, Import character
 and check for updates. Lets start with 
 
 LEVEL BUTTONS
@@ -25,13 +25,16 @@ Using a pastebin, pressing this button will check for updates. If one is found, 
 if you want to download.
 
 CHANGE TO _ CHRACTER
-The light blue and pink buttons change your character. There is a girl and a boy character. You can make your own character
-by overwriting the game files 'girl.png' and 'boy.png'. The character images are 40x100 pixels.
+The light blue and pink buttons change your character. There is a girl and a boy character.
+
+IMPORT CHARACTER
+Most image files can be used as custom characters. The reccomended size for characters is 40x100 pixels. When you click on the button you will be prompted to choose
+a file. If said file is deleted, the game will revert back to the boy character.
 
 WHAT TO DO IF YOU FIND A BUG
 Report it at github.
-https://github.com/Enderbyte-Programs/Parkour_Game/issues
+https://github.com/Enderbyte-Programs/Avoiders/issues
 
 LEVEL / FEATURE SUGGESTIONS
 Feature request at Github
-https://github.com/Enderbyte-Programs/Parkour_Game/issues
+https://github.com/Enderbyte-Programs/Avoiders/issues
