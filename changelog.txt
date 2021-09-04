@@ -1,3 +1,6 @@
+0.4
+Added version number in corner of menu, fixed mainloop bug by disabling x button, added levels 4 and 5 (level 5 has moving parts)
+-----
 0.3.1
 Fixed bugs where it still says dos cave.
 -----
