@@ -1,0 +1,11 @@
+Requirements for execution
+A computer running WINDOWS 10 (maybe windows 11, haven't tested yet)
+Python WITH TKINTER 3.9.5 or newer
+
+This program relies on a number of libraries
+
+Please execute the following commands in your scripts folder before executing source
+
+.\pip install pygame
+.\pip install requests
+
