@@ -38,3 +38,38 @@ https://github.com/Enderbyte-Programs/Avoiders/issues
 LEVEL / FEATURE SUGGESTIONS
 Feature request at Github
 https://github.com/Enderbyte-Programs/Avoiders/issues
+
+LEVEL DESCRIPTIONS / DIFFICULTY
+Classes:
+Super easy --
+Easy -
+Moderate |
+Hard +
+Extra Hard ++
+/////
+EXAMPLE
+Level Number
+Description
+Difficulty
+/////
+Level 1
+Single obstacle on bottom, unmoving. Straight shot to win
+--
+/////
+Level 2
+Vertical unmoving obstacle at end near win. Still straight shot. Just don't bump your head.
+-
+/////
+Level 3
+Level 2, but with vertical unmoving obstacle near start. Player has to go over it. (was made easier as of 0.4)
+-
+/////
+Level 4
+Level 3, but with additional horizontal unmoving obstacle near start. You now have to take a rather curvy path
+-
+/////
+Level 5
+No unmoving obstalces, straight shot to win. Every 1 second, a small moving obstacle will appear at a random point on the top, and go to the bottom (on the same x)
+at a speed of 150 pixels per second (p/sec)
+|
+/////

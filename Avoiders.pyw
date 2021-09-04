@@ -1,9 +1,10 @@
-#Version 0.3
+#Version 0.4
 from log55 import log
 x = 'gamelog.log'
 log(x,'Game started')
 from tkinter.constants import LEFT,BOTTOM,RIGHT
 import pygame
+
 
 from pygame.locals import (K_UP,
 
@@ -19,10 +20,11 @@ from pygame.locals import (K_UP,
 
     QUIT,)
 import platform
-SYSVERSION = '0.2.0'
+
 from tkinter import Tk, Label, Button, filedialog
 from tkinter import messagebox
 import os
+import random
 from requests import get
 from packaging import version
 from webbrowser import open as web
@@ -36,7 +38,7 @@ else:
 def cfu():
     
     data = get('https://pastebin.com/raw/cg0knwqc').text
-    SYSVERSION = version.parse("0.3.0")
+    SYSVERSION = version.parse("0.4.0")
     LATVERSION = version.parse(data[0:6].replace(' ',''))
     if LATVERSION > SYSVERSION:
         Tk().withdraw()
@@ -89,6 +91,8 @@ while True:
             f = open('default.dat','w+')
             f.write(x)
             f.close()
+    
+    
 
     if os.path.isfile('default.dat') == True:
         f = open('default.dat')
@@ -108,6 +112,8 @@ while True:
     root = Tk()
     root.title('Game Menu')
     root.geometry('600x200')
+    def disable_event():
+        pass
     lbl = Label(root,text='Welcome to Avoiders. Please select the level that you want to play. If you are unsure, press HOW TO PLAY.')
     lbl.pack()
     btn = Button(root,text='Level 1',bg='lime green',command=lambda: lvlassig(1))
@@ -116,6 +122,12 @@ while True:
     btn4.pack(side=LEFT)
     btn8 = Button(root,text='Level 3',bg='lime green',command=lambda: lvlassig(3))
     btn8.pack(side=LEFT)
+    btn9 = Button(root,text='Level 4',bg='lime green',command=lambda: lvlassig(4))
+    btn9.pack(side=LEFT)
+    btn10 = Button(root,text='Level 5',bg='lime green',command=lambda: lvlassig(5))
+    btn10.pack(side=LEFT)
+    btn3 = Button(root,text='Check for updates',bg='skyblue',command=cfu)
+    btn3.pack(side=RIGHT)
     btn5 = Button(root,text='Switch to girl character',bg='pink',command=girl)
     btn5.pack()
     
@@ -128,13 +140,16 @@ while True:
     
     btn1 = Button(root,text='Exit',bg='Red',command=die)
     btn1.pack(side=BOTTOM)
+    
     btn2 = Button(root,text='How To Play',bg='yellow',command=lambda: os.startfile('how_to_play.txt'))
     btn2.pack(side=BOTTOM)
-    btn3 = Button(root,text='Check for updates',bg='skyblue',command=cfu)
-    btn3.pack(side=RIGHT)
+    lbl1 = Label(root,text='Avoiders Build 0.4')
+    lbl1.place(x=0,y=root.winfo_height()+25)
     
-    
+    root.protocol("WM_DELETE_WINDOW", disable_event)
     root.mainloop()
+    root.quit()
+    
     if os.path.isfile('default.dat') == True:
         f = open('default.dat')
         charpic = f.read()
@@ -431,7 +446,7 @@ while True:
                 super(Obs3,self).__init__()
                 self.surf = pygame.Surface((50,400))
                 self.surf.fill((255,255,255))
-                self.rect = self.surf.get_rect(center=(200,300))
+                self.rect = self.surf.get_rect(center=(200,325))
         clock = pygame.time.Clock()
         pygame.init()
         SCREEN_WIDTH = 800
@@ -497,7 +512,261 @@ while True:
         elif win == False:
             Tk().withdraw()
             messagebox.showwarning('Game','You died.')
+
+
+
+    if lvl == 4:
+        log(x,'Level 4: Preparing')
+        class Player(pygame.sprite.Sprite):
+            def __init__(self):
+                global charpic
+                super(Player,self).__init__()
+                self.surf = pygame.image.load(charpic).convert()
+                self.surf.set_colorkey((255,255,255),RLEACCEL)
+                
+                self.rect = self.surf.get_rect(center=(50,400))
+            def update(self,pressed_keys):
+                if pressed_keys[K_LEFT]:
+                    self.rect.move_ip(-5,0)
+                if pressed_keys[K_RIGHT]:
+                    self.rect.move_ip(5,0)
+                if pressed_keys[K_UP]:
+                    self.rect.move_ip(0,-5)
+                if pressed_keys[K_DOWN]:    
+                    self.rect.move_ip(0,5)
+                if self.rect.left < 0:
+
+                    self.rect.left = 0
+
+                if self.rect.right > SCREEN_WIDTH:
+
+                    self.rect.right = SCREEN_WIDTH
+
+                if self.rect.top <= 0:
+
+                    self.rect.top = 0
+
+                if self.rect.bottom >= SCREEN_HEIGHT:
+
+                    self.rect.bottom = SCREEN_HEIGHT
+        class Win(pygame.sprite.Sprite):
+            def __init__(self):
+                super(Win,self).__init__()
+                self.surf = pygame.Surface((50,50))
+                self.surf.fill((0,255,0))
+                self.rect = self.surf.get_rect(center=(700,500))
+
+        class Obstacle(pygame.sprite.Sprite):
+            def __init__(self):
+                super(Obstacle,self).__init__()
+                self.surf = pygame.Surface((800,50))
+                self.surf.fill((255,255,255))
+                self.rect = self.surf.get_rect(center=(400,525))
+        class Obs2(pygame.sprite.Sprite):
+            def __init__(self):
+                super(Obs2,self).__init__()
+                self.surf = pygame.Surface((50,300))
+                self.surf.fill((255,255,255))
+                self.rect = self.surf.get_rect(center=(600,200))
+        class Obs3(pygame.sprite.Sprite):
+            def __init__(self):
+                super(Obs3,self).__init__()
+                self.surf = pygame.Surface((50,400))
+                self.surf.fill((255,255,255))
+                self.rect = self.surf.get_rect(center=(200,300))
+        class Obs4(pygame.sprite.Sprite):
+            def __init__(self):
+                super(Obs4,self).__init__()
+                self.surf = pygame.Surface((350,50))
+                self.surf.fill((255,255,255))
+                self.rect = self.surf.get_rect(center=(275,300))
+        clock = pygame.time.Clock()
+        pygame.init()
+        SCREEN_WIDTH = 800
+        SCREEN_HEIGHT = 600
+        a = pygame.image.load('ep.ico')
+        screen = pygame.display.set_mode([SCREEN_WIDTH,SCREEN_HEIGHT])
+        pygame.display.set_caption('Game Level 4')
+        pygame.display.set_icon(a)
+        player = Player()
+        all_sprites = pygame.sprite.Group()
+        all_sprites.add(player)
+        win = Win()
+        wins = pygame.sprite.Group()
+        wins.add(win)
+        all_sprites.add(win)
+        obstacle = Obstacle()
+        obstacles = pygame.sprite.Group()
+        obs2 = Obs2()
+        obs3 = Obs3()
+        obs4 = Obs4()
+        obstacles.add(obs4)
+        obstacles.add(obs3)
         
+        obstacles.add(obs2)
+        obstacles.add(obstacle)
+        for obstac in obstacles:
+            all_sprites.add(obstac)
+        
+        running = True
+        log(x,'level 4: Started')
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                    
+                if event.type == pygame.KEYDOWN:
+                    if event.key == K_ESCAPE:
+                        running = False
+                        
+            pressed_keys = pygame.key.get_pressed()
+            player.update(pressed_keys)
+            screen.fill((0,0,0))
+
+            for entity in all_sprites:
+                screen.blit(entity.surf,entity.rect)
+            if pygame.sprite.spritecollideany(player,wins):
+                win = True
+                player.kill()
+                win_sound.play()
+                running = False
+            if pygame.sprite.spritecollideany(player,obstacles):
+                win = False
+                player.kill()
+                lose_sound.play()
+                running = False
+            
+            pygame.display.flip()
+            clock.tick(30)
+        pygame.display.quit()
+        if win == True:
+            Tk().withdraw()
+            
+            m = messagebox.askyesno('Game','You win level 4! Do you want to play level 5?')
+            if m == True:
+                lvl = 5
+        elif win == False:
+            Tk().withdraw()
+            messagebox.showwarning('Game','You died.')
+
+    if lvl == 5:
+
+        log(x,'Level 5: Preparing')
+        class Player(pygame.sprite.Sprite):
+            def __init__(self):
+                global charpic
+                super(Player,self).__init__()
+                self.surf = pygame.image.load(charpic).convert()
+                self.surf.set_colorkey((255,255,255),RLEACCEL)
+                
+                self.rect = self.surf.get_rect(center=(50,400))
+            def update(self,pressed_keys):
+                if pressed_keys[K_LEFT]:
+                    self.rect.move_ip(-5,0)
+                if pressed_keys[K_RIGHT]:
+                    self.rect.move_ip(5,0)
+                if pressed_keys[K_UP]:
+                    self.rect.move_ip(0,-5)
+                if pressed_keys[K_DOWN]:    
+                    self.rect.move_ip(0,5)
+                if self.rect.left < 0:
+
+                    self.rect.left = 0
+
+                if self.rect.right > SCREEN_WIDTH:
+
+                    self.rect.right = SCREEN_WIDTH
+
+                if self.rect.top <= 0:
+
+                    self.rect.top = 0
+
+                if self.rect.bottom >= SCREEN_HEIGHT:
+
+                    self.rect.bottom = SCREEN_HEIGHT
+        class Win(pygame.sprite.Sprite):
+            def __init__(self):
+                super(Win,self).__init__()
+                self.surf = pygame.Surface((50,50))
+                self.surf.fill((0,255,0))
+                self.rect = self.surf.get_rect(center=(700,500))
+
+        class Obstacle(pygame.sprite.Sprite):
+            def __init__(self):
+                super(Obstacle,self).__init__()
+                self.surf = pygame.Surface((20,10))
+                self.surf.fill((255,255,255))
+                self.rect = self.surf.get_rect(center=(random.randint(0,SCREEN_WIDTH),0))
+            def update(self):
+                self.rect.move_ip(0,5)
+                if self.rect.bottom >= SCREEN_HEIGHT:
+                    self.kill()
+
+        clock = pygame.time.Clock()
+        pygame.init()
+        SCREEN_WIDTH = 800
+        SCREEN_HEIGHT = 600
+        a = pygame.image.load('ep.ico')
+        screen = pygame.display.set_mode([SCREEN_WIDTH,SCREEN_HEIGHT])
+        ADDOBS = pygame.USEREVENT + 1
+        pygame.time.set_timer(ADDOBS,1000)
+        pygame.display.set_caption('Game Level 5')
+        pygame.display.set_icon(a)
+        player = Player()
+        all_sprites = pygame.sprite.Group()
+        all_sprites.add(player)
+        win = Win()
+        wins = pygame.sprite.Group()
+        wins.add(win)
+        all_sprites.add(win)
+        obstacle = Obstacle()
+        obstacles = pygame.sprite.Group()
+        obstacles.add(obstacle)
+        all_sprites.add(obstacle)
+        running = True
+        log(x,'Level 5 Started')
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                    
+                if event.type == pygame.KEYDOWN:
+                    if event.key == K_ESCAPE:
+                        running = False
+                elif event.type == ADDOBS:
+                    newobs = Obstacle()
+                    obstacles.add(newobs)
+                    all_sprites.add(newobs)
+                        
+            pressed_keys = pygame.key.get_pressed()
+            player.update(pressed_keys)
+            screen.fill((0,0,0))
+            obstacles.update()
+            for entity in all_sprites:
+                screen.blit(entity.surf,entity.rect)
+            if pygame.sprite.spritecollideany(player,wins):
+                win = True
+                player.kill()
+                win_sound.play()
+                running = False
+            if pygame.sprite.spritecollideany(player,obstacles):
+                win = False
+                player.kill()
+                lose_sound.play()
+                running = False
+            
+            pygame.display.flip()
+            clock.tick(30)
+        pygame.display.quit()
+        if win == True:
+            Tk().withdraw()
+            
+            m = messagebox.askyesno('Game','You win level 5! Do you want to play level 6?')
+            if m == True:
+                lvl = 5
+        elif win == False:
+            Tk().withdraw()
+            messagebox.showwarning('Game','You died.')
 
     elif lvl == 0:
         log(x,'shutting down sound system')
