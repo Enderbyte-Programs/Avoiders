@@ -1,4 +1,4 @@
-#Version 0.4
+#Version 0.4.1
 from log55 import log
 x = 'gamelog.log'
 log(x,'Game started')
@@ -16,9 +16,7 @@ from pygame.locals import (K_UP,
 
     K_ESCAPE,
     RLEACCEL,
-    KEYDOWN,
-
-    QUIT,)
+    )
 import platform
 
 from tkinter import Tk, Label, Button, filedialog
@@ -38,7 +36,7 @@ else:
 def cfu():
     
     data = get('https://pastebin.com/raw/cg0knwqc').text
-    SYSVERSION = version.parse("0.4.0")
+    SYSVERSION = version.parse("0.4.1")
     LATVERSION = version.parse(data[0:6].replace(' ',''))
     if LATVERSION > SYSVERSION:
         Tk().withdraw()
@@ -143,7 +141,7 @@ while True:
     
     btn2 = Button(root,text='How To Play',bg='yellow',command=lambda: os.startfile('how_to_play.txt'))
     btn2.pack(side=BOTTOM)
-    lbl1 = Label(root,text='Avoiders Build 0.4')
+    lbl1 = Label(root,text='Avoiders Build 0.4.1')
     lbl1.place(x=0,y=root.winfo_height()+25)
     
     root.protocol("WM_DELETE_WINDOW", disable_event)
@@ -170,8 +168,24 @@ while True:
             
             def __init__(self):
                 global charpic
+                
                 super(Player,self).__init__()
-                self.surf = pygame.image.load(charpic).convert()
+                global ivif
+                try:
+                    self.surf = pygame.image.load(charpic).convert()
+                except:
+                    log(x,'Loaded invalid image file')
+                    Tk().withdraw()
+                    messagebox.showwarning('Game','Please use a valid image file')
+                    charpic = 'boy.png'
+                    
+                    f = open('default.dat','w+')
+                    f.write('boy.png')
+                    f.close()
+                    self.surf = pygame.image.load(charpic).convert()
+                    ivif = True
+                else:
+                    ivif = False
                 self.surf.set_colorkey((255,255,255),RLEACCEL)
                 
                 self.rect = self.surf.get_rect(center=(50,400))
@@ -234,6 +248,8 @@ while True:
         running = True
         log(x,'level 1: Started')
         while running:
+            if ivif == True:
+                break
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -278,7 +294,23 @@ while True:
             def __init__(self):
                 global charpic
                 super(Player,self).__init__()
-                self.surf = pygame.image.load(charpic).convert()
+                global ivif
+                try:
+                    self.surf = pygame.image.load(charpic).convert()
+                except:
+                    log(x,'Loaded invalid image file')
+                    Tk().withdraw()
+                    messagebox.showwarning('Game','Please use a valid image file')
+                    charpic = 'boy.png'
+                    
+                    f = open('default.dat','w+')
+                    f.write('boy.png')
+                    f.close()
+                    self.surf = pygame.image.load(charpic).convert()
+                    ivif = True
+                else:
+                    ivif = False
+                
                 self.surf.set_colorkey((255,255,255),RLEACCEL)
                 
                 self.rect = self.surf.get_rect(center=(50,400))
@@ -350,6 +382,8 @@ while True:
         running = True
         log(x,'level 2: Started')
         while running:
+            if ivif == True:
+                break
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -394,7 +428,23 @@ while True:
             def __init__(self):
                 global charpic
                 super(Player,self).__init__()
-                self.surf = pygame.image.load(charpic).convert()
+                global ivif
+                try:
+                    self.surf = pygame.image.load(charpic).convert()
+                except:
+                    log(x,'Loaded invalid image file')
+                    Tk().withdraw()
+                    messagebox.showwarning('Game','Please use a valid image file')
+                    charpic = 'boy.png'
+                    
+                    f = open('default.dat','w+')
+                    f.write('boy.png')
+                    f.close()
+                    self.surf = pygame.image.load(charpic).convert()
+                    ivif = True
+                else:
+                    ivif = False
+                
                 self.surf.set_colorkey((255,255,255),RLEACCEL)
                 
                 self.rect = self.surf.get_rect(center=(50,400))
@@ -475,6 +525,8 @@ while True:
         running = True
         log(x,'level 3: Started')
         while running:
+            if ivif == True:
+                break
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -521,7 +573,23 @@ while True:
             def __init__(self):
                 global charpic
                 super(Player,self).__init__()
-                self.surf = pygame.image.load(charpic).convert()
+                global ivif
+                try:
+                    self.surf = pygame.image.load(charpic).convert()
+                except:
+                    log(x,'Loaded invalid image file')
+                    Tk().withdraw()
+                    messagebox.showwarning('Game','Please use a valid image file')
+                    charpic = 'boy.png'
+                    
+                    f = open('default.dat','w+')
+                    f.write('boy.png')
+                    f.close()
+                    self.surf = pygame.image.load(charpic).convert()
+                    ivif = True
+                else:
+                    ivif = False
+                
                 self.surf.set_colorkey((255,255,255),RLEACCEL)
                 
                 self.rect = self.surf.get_rect(center=(50,400))
@@ -611,6 +679,8 @@ while True:
         running = True
         log(x,'level 4: Started')
         while running:
+            if ivif == True:
+                break
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -656,7 +726,23 @@ while True:
             def __init__(self):
                 global charpic
                 super(Player,self).__init__()
-                self.surf = pygame.image.load(charpic).convert()
+                global ivif
+                try:
+                    self.surf = pygame.image.load(charpic).convert()
+                except:
+                    log(x,'Loaded invalid image file')
+                    Tk().withdraw()
+                    messagebox.showwarning('Game','Please use a valid image file')
+                    charpic = 'boy.png'
+                    
+                    f = open('default.dat','w+')
+                    f.write('boy.png')
+                    f.close()
+                    self.surf = pygame.image.load(charpic).convert()
+                    ivif = True
+                else:
+                    ivif = False
+                
                 self.surf.set_colorkey((255,255,255),RLEACCEL)
                 
                 self.rect = self.surf.get_rect(center=(50,400))
@@ -726,6 +812,8 @@ while True:
         running = True
         log(x,'Level 5 Started')
         while running:
+            if ivif == True:
+                break
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False

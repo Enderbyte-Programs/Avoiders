@@ -30,6 +30,7 @@ The light blue and pink buttons change your character. There is a girl and a boy
 IMPORT CHARACTER
 Most image files can be used as custom characters. The reccomended size for characters is 40x100 pixels. When you click on the button you will be prompted to choose
 a file. If said file is deleted, the game will revert back to the boy character.
+If you load a file that is not an image, a messagebox warning will appear, and you will be kicked to the game menu.
 
 WHAT TO DO IF YOU FIND A BUG
 Report it at github.
