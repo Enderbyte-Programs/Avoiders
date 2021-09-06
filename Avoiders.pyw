@@ -1,4 +1,4 @@
-#Version 0.4.1
+#Version 0.4.2
 from log55 import log
 x = 'gamelog.log'
 log(x,'Game started')
@@ -36,7 +36,7 @@ else:
 def cfu():
     
     data = get('https://pastebin.com/raw/cg0knwqc').text
-    SYSVERSION = version.parse("0.4.1")
+    SYSVERSION = version.parse("0.4.2")
     LATVERSION = version.parse(data[0:6].replace(' ',''))
     if LATVERSION > SYSVERSION:
         Tk().withdraw()
@@ -141,7 +141,7 @@ while True:
     
     btn2 = Button(root,text='How To Play',bg='yellow',command=lambda: os.startfile('how_to_play.txt'))
     btn2.pack(side=BOTTOM)
-    lbl1 = Label(root,text='Avoiders Build 0.4.1')
+    lbl1 = Label(root,text='Avoiders Build 0.4.1 (c) 2021 Enderbyte Programs')
     lbl1.place(x=0,y=root.winfo_height()+25)
     
     root.protocol("WM_DELETE_WINDOW", disable_event)
