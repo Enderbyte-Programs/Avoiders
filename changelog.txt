@@ -1,3 +1,9 @@
+0.5.1
+Fixed bugs
+-----
+0.5
+Added level 6 and full exception handling
+-----
 0.4.2
 Nothing
 -----
