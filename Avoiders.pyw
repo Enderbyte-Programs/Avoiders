@@ -1,4 +1,4 @@
-#Version 0.5
+#Version 0.5.1
 from tkinter import Tk
 from time import sleep
 from sys import exit as forcequit
@@ -72,7 +72,7 @@ else:
 def cfu():
     
     data = get('https://pastebin.com/raw/cg0knwqc').text
-    SYSVERSION = version.parse("0.5.0")
+    SYSVERSION = version.parse("0.5.1")
     LATVERSION = version.parse(data[0:6].replace(' ',''))
     if LATVERSION > SYSVERSION:
         Tk().withdraw()
@@ -212,7 +212,7 @@ while True:
     if os.path.isfile('how_to_play.txt') == False:
         log(x,'Could not find file "how_to_play.txt"')
         btn2['state'] = 'disabled'
-    lbl1 = Label(root,text='Avoiders Build 0.5.0 (c) 2021 Enderbyte Programs')
+    lbl1 = Label(root,text='Avoiders Build 0.5.1 (c) 2021 Enderbyte Programs')
     lbl1.place(x=0,y=root.winfo_height()+25)
     
     root.protocol("WM_DELETE_WINDOW", disable_event)
@@ -926,7 +926,7 @@ while True:
             
             m = messagebox.askyesno('Game','You win level 5! Do you want to play level 6?')
             if m == True:
-                lvl = 5
+                lvl = 6
         elif win == False:
             Tk().withdraw()
             messagebox.showwarning('Game','You died.')
