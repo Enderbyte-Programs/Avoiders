@@ -9,8 +9,7 @@ Clicking the level of your choice will start the associated game level (stored i
 
 HOW TO PLAY
 
-You are the person. Navigate with the arrow keys. (I am going to add a girl character soon for those
-that want it). Your goal is to get to the green box (win) without touching any of the white obstacles.
+You are the person. Navigate with the arrow keys. Your goal is to get to the green box (win) without touching any of the white obstacles.
 Touching an obstacle will result in you dieing. You will than have to select the level to play again.
 
 EXIT BUTTON
