@@ -73,3 +73,7 @@ No unmoving obstalces, straight shot to win. Every 1 second, a small moving obst
 at a speed of 150 pixels per second (p/sec)
 |
 /////
+Level 6
+Level 5, but small moving obstacles can go as fast as 600 p/sec
++
+/////
